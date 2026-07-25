@@ -1,0 +1,4 @@
+:root { color-scheme: light; }
+body { margin: 0; background: #fafafa; color: #111; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+button:hover { filter: brightness(1.08); }
