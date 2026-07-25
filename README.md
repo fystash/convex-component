@@ -1,10 +1,9 @@
 # @fystash_ai/convex
 
-[Convex](https://convex.dev) component for [Fystash](https://fystash.ai) multi-agent sandboxes —
+Convex component for the [Fystash](https://fystash.ai) multi-agent sandbox —
 create a room, spawn agents, write the shared drive, exec, destroy.
 
-**Live demo:** https://fystash-convex-component.vercel.app  
-**npm:** [`@fystash_ai/convex`](https://www.npmjs.com/package/@fystash_ai/convex)
+Uses shared [`FystashSession`](../../typescript/src/session.ts) from `@fystash_ai/sdk`.
 
 ## Install
 
@@ -33,18 +32,19 @@ app.use(fystash, {
 export default app;
 ```
 
-Set on your Convex deployment:
+Set in the Convex dashboard (or `.env.local` for `convex dev`):
 
 ```
 FYSTASH_API=https://api.fystash.ai
 FYSTASH_API_KEY=key-…
 ```
 
-Components cannot see app env vars unless you pass them through `app.use` as above.
+Components are isolated from app env — pass `FYSTASH_*` through `app.use` as above.
 
 ## Use
 
 ```ts
+// convex/fleet.ts
 import { action } from "./_generated/server";
 import { components } from "./_generated/api";
 import { Fystash } from "@fystash_ai/convex";
@@ -61,21 +61,20 @@ export const helloFleet = action({
       drivePath: "hello.txt",
       driveContent: "many agents, one workspace",
       execAgentId: "scout",
-      execArgv: ["cat", "hello.txt"],
+      execArgv: ["/bin/cat", "hello.txt"],
       destroyAfter: true,
     });
   },
 });
 ```
 
-## Develop this repo
+Or call steps individually: `createRoom` → `spawn` / `spawnMany` → `driveWrite` → `exec` → `destroy`.
+
+## Develop (this repo)
 
 ```bash
-npm i
-npx convex dev
-npm run example
+cd sdk/typescript && npm i && npm run build
+cd ../components/convex && npm i && npm run build
 ```
 
-## License
-
-Apache-2.0
+Cookbook: [docs/cookbook/12-convex-component.md](../../../docs/cookbook/12-convex-component.md).

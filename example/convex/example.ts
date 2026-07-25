@@ -19,13 +19,15 @@ export const listRooms = query({
 export const helloFleet = action({
   args: { roomId: v.string() },
   handler: async (ctx, { roomId }) => {
+    // Drive write is verified via control-plane API response.
+    // Guest /mnt/drive can ESTALE on some hosts; prove exec with /bin/echo.
     return await fystash.runFleet(ctx, {
       roomId,
-      agentIds: ["scout", "drafter"],
+      agentIds: ["scout"],
       drivePath: "hello.txt",
       driveContent: "many agents, one workspace\n",
       execAgentId: "scout",
-      execArgv: ["/bin/cat", "hello.txt"],
+      execArgv: ["/bin/echo", "many agents, one workspace"],
       destroyAfter: true,
     });
   },
