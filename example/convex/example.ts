@@ -25,7 +25,7 @@ export const helloFleet = action({
       drivePath: "hello.txt",
       driveContent: "many agents, one workspace\n",
       execAgentId: "scout",
-      execArgv: ["cat", "hello.txt"],
+      execArgv: ["/bin/cat", "hello.txt"],
       destroyAfter: true,
     });
   },

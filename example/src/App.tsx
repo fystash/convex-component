@@ -36,7 +36,7 @@ export default function App() {
       <h1 style={{ marginTop: 8 }}>Fystash multi-agent rooms in Convex</h1>
       <p style={{ lineHeight: 1.5, opacity: 0.85 }}>
         One click creates a room, spawns two agents, writes a shared drive file,
-        execs <code>cat</code> inside a sandbox, then destroys the room.
+        execs <code>/bin/cat</code> inside a sandbox, then destroys the room.
       </p>
       <button
         onClick={onRun}

@@ -15,10 +15,21 @@ npm i @fystash_ai/convex @fystash_ai/sdk
 ```ts
 // convex/convex.config.ts
 import { defineApp } from "convex/server";
+import { v } from "convex/values";
 import fystash from "@fystash_ai/convex/convex.config.js";
 
-const app = defineApp();
-app.use(fystash);
+const app = defineApp({
+  env: {
+    FYSTASH_API: v.optional(v.string()),
+    FYSTASH_API_KEY: v.optional(v.string()),
+  },
+});
+app.use(fystash, {
+  env: {
+    FYSTASH_API: app.env.FYSTASH_API,
+    FYSTASH_API_KEY: app.env.FYSTASH_API_KEY,
+  },
+});
 export default app;
 ```
 
@@ -28,6 +39,8 @@ Set on your Convex deployment:
 FYSTASH_API=https://api.fystash.ai
 FYSTASH_API_KEY=key-…
 ```
+
+Components cannot see app env vars unless you pass them through `app.use` as above.
 
 ## Use
 
@@ -54,8 +67,6 @@ export const helloFleet = action({
   },
 });
 ```
-
-Or call steps individually: `createRoom` → `spawn` / `spawnMany` → `driveWrite` → `exec` → `destroy`.
 
 ## Develop this repo
 
