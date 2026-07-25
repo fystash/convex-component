@@ -1,7 +1,5 @@
-"use node";
-
 import { v } from "convex/values";
-import { FystashSession } from "@fystash_ai/sdk";
+import { FystashSession } from "@fystash_ai/sdk/session";
 import { action } from "./_generated/server.js";
 import { internal } from "./_generated/api.js";
 

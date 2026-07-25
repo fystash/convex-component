@@ -3,6 +3,9 @@
 [Convex](https://convex.dev) component for [Fystash](https://fystash.ai) multi-agent sandboxes —
 create a room, spawn agents, write the shared drive, exec, destroy.
 
+**Live demo:** https://fystash-convex-component.vercel.app  
+**npm:** [`@fystash_ai/convex`](https://www.npmjs.com/package/@fystash_ai/convex)
+
 ## Install
 
 ```bash
@@ -54,9 +57,7 @@ export const helloFleet = action({
 
 Or call steps individually: `createRoom` → `spawn` / `spawnMany` → `driveWrite` → `exec` → `destroy`.
 
-## Demo
-
-Live demo: see the GitHub Pages / Vercel URL in the repo About section after deploy.
+## Develop this repo
 
 ```bash
 npm i

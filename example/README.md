@@ -1,8 +1,7 @@
-# Fystash Convex component demo
+# Example app
 
-```bash
-# from repo root
-npm i
-npx convex dev   # set FYSTASH_API + FYSTASH_API_KEY in dashboard
-npm run example
-```
+Components need an app that uses them in order to run codegen.
+
+An example app is also useful for testing and documentation.
+
+Run the example and convex commands from the root of the repo.

@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run example:build",
+  "outputDirectory": "example/dist",
+  "framework": null,
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

@@ -47,5 +47,5 @@ export declare const internal: FilterApi<
 >;
 
 export declare const components: {
-  sampleComponent: import("@example/sample-component/_generated/component.js").ComponentApi<"sampleComponent">;
+  fystash: import("../../../src/component/_generated/component.js").ComponentApi<"fystash">;
 };
